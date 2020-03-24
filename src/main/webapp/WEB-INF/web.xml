@@ -31,12 +31,12 @@
     <url-pattern>/product</url-pattern>
   </servlet-mapping>
 
-  <!--<error-page>
+  <error-page>
     <error-code>404</error-code>
-    <location>index2.jsp</location>
+    <location>/WEB-INF/not_found.jsp</location>
   </error-page>
   <error-page>
     <error-code>403</error-code>
-    <location>index2.jsp</location>
-  </error-page>-->
+    <location>/WEB-INF/forbidden.jsp</location>
+  </error-page>
 </web-app>
