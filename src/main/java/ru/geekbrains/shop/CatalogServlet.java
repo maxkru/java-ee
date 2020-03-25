@@ -13,10 +13,8 @@ public class CatalogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter respWriter = resp.getWriter();
         respWriter.print("<h1>Каталог</h1>");
-        respWriter.printf("<a href=%1$s/main>Главная страница</a> " +
-                "<a href=%1$s/cart>Корзина</a> " +
-                "<a href=%1$s/order>Оформление заказа</a> " +
-                "<a href=%1$s/product>Описание товара</a> " +
-                "Каталог", getServletContext().getContextPath());
+        req.setAttribute("page", "catalog");
+        req.setAttribute("contextPath", getServletContext().getContextPath());
+        getServletContext().getRequestDispatcher("/navbar").include(req, resp);
     }
 }
