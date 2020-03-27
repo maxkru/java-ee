@@ -4,4 +4,39 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+    <servlet-name>MainServlet</servlet-name>
+    <servlet-class>ru.geekbrains.shop.MainServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>MainServlet</servlet-name>
+    <url-pattern>/main</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/cart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CatalogServlet</servlet-name>
+    <url-pattern>/catalog</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/order</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/product</url-pattern>
+  </servlet-mapping>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/not_found.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/forbidden.jsp</location>
+  </error-page>
 </web-app>
