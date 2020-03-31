@@ -1,3 +1,4 @@
+<%@ page import="ru.geekbrains.shop.format.DecimalFormatter" %>
 <%@ page import="ru.geekbrains.shop.persist.Product" %><%--
   Created by IntelliJ IDEA.
   User: max
@@ -14,6 +15,6 @@
 <body>
 <h1><%= product.getName() %></h1>
 <p><%= product.getDescription() %></p>
-<p>Цена: <%= product.getPrice() %> рублей</p>
+<p>Цена: <%= DecimalFormatter.format(product.getPrice()) %> рублей</p>
 </body>
 </html>
