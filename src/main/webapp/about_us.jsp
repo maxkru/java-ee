@@ -13,5 +13,8 @@
 <body>
 <h1>О компании</h1>
 <p>Молодая, динамично развивающаяся компания ООО "Вектор" предлагает услуги для Вашего бизнеса.</p>
+<jsp:include page="/navbar">
+    <jsp:param name="page" value="about_us.jsp"/>
+</jsp:include>
 </body>
 </html>

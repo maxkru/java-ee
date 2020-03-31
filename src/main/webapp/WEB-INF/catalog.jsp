@@ -13,17 +13,21 @@
     <title>Каталог</title>
 </head>
 <body>
-    <table border="2">
-        <tr>
-            <th>Наименование</th>
-            <th>Цена (руб.)</th>
-        </tr>
-        <% for (Product product : ((ProductList) application.getAttribute("productList")).getList()) { %>
-        <tr>
-            <td><a href="<%= request.getContextPath() + "/product?id=" + product.getId() %>"><%= product.getName() %></a></td>
-            <td><%= DecimalFormatter.format(product.getPrice()) %></td>
-        </tr>
-        <% } %>
-    </table>
+<h1>Каталог товаров</h1>
+<table border="2">
+    <tr>
+        <th>Наименование</th>
+        <th>Цена (руб.)</th>
+    </tr>
+    <% for (Product product : ((ProductList) application.getAttribute("productList")).getList()) { %>
+    <tr>
+        <td><a href="<%= request.getContextPath() + "/product?id=" + product.getId() %>"><%= product.getName() %></a></td>
+        <td><%= DecimalFormatter.format(product.getPrice()) %></td>
+    </tr>
+    <% } %>
+</table>
+<jsp:include page="/navbar">
+    <jsp:param name="page" value="catalog"/>
+</jsp:include>
 </body>
 </html>

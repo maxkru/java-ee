@@ -16,5 +16,8 @@
 <h1><%= product.getName() %></h1>
 <p><%= product.getDescription() %></p>
 <p>Цена: <%= DecimalFormatter.format(product.getPrice()) %> рублей</p>
+<jsp:include page="/navbar">
+    <jsp:param name="page" value="product"/>
+</jsp:include>
 </body>
 </html>

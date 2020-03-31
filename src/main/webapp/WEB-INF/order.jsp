@@ -12,5 +12,8 @@
 </head>
 <body>
 <h1>Оформление заказа</h1>
+<jsp:include page="/navbar">
+    <jsp:param name="page" value="order"/>
+</jsp:include>
 </body>
 </html>
