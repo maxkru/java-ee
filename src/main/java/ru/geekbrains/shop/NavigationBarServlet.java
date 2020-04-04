@@ -14,8 +14,8 @@ public class NavigationBarServlet implements Servlet {
         pages.put("main", "Главная страница");
         pages.put("cart", "Корзина");
         pages.put("order", "Оформление заказа");
-        pages.put("product", "Описание товара");
         pages.put("catalog", "Каталог");
+        pages.put("about_us.jsp", "О компании");
     }
 
     @Override
@@ -31,7 +31,7 @@ public class NavigationBarServlet implements Servlet {
     @Override
     public void service(ServletRequest req, ServletResponse resp) throws ServletException, IOException {
         for (String page : pages.keySet()) {
-            if (req.getAttribute("page").equals(page)) {
+            if (req.getParameter("page").equals(page)) {
                 resp.getWriter().print(pages.get(page) + " ");
             } else {
                 resp.getWriter().printf("<a href=%s/%s>%s</a> ", req.getAttribute("contextPath"), page, pages.get(page));
