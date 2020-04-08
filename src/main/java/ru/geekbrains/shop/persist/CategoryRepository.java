@@ -17,8 +17,8 @@ public class CategoryRepository {
     @PostConstruct
     public void init() {
         categories = new ArrayList<>();
-        categories.add(new Category(1, "Раз", "РАЗРАЗ"));
-        categories.add(new Category(2, "Два", "ДВАДВА"));
+        categories.add(new Category(1, "Категория 1", "Первая категория"));
+        categories.add(new Category(2, "Категория 2", "Вторая категория"));
 
         nextId = categories.size() + 1;
     }

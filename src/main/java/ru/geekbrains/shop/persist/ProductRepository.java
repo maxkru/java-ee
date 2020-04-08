@@ -21,8 +21,8 @@ public class ProductRepository {
     @PostConstruct
     public void init() {
         products = new ArrayList<>();
-        products.add(new Product(1, "Раз", "РАЗРАЗ", new BigDecimal("1000")));
-        products.add(new Product(2, "Два", "ДВАДВА", new BigDecimal("2300.132")));
+        products.add(new Product(1, "Товар 1", "Первый товар", new BigDecimal("1000")));
+        products.add(new Product(2, "Товар 2", "Второй товар", new BigDecimal("2300.132")));
 
         nextId = products.size() + 1;
     }

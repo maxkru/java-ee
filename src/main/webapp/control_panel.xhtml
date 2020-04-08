@@ -32,9 +32,9 @@
                 #{product.price}
             </h:column>
             <h:column>
-                <f:facet name="header">Actions</f:facet>
-                <h:commandButton value="Edit" action="#{productController.editProduct(product)}"/>
-                <h:commandButton value="Remove" action="#{productController.deleteProduct(product)}">
+                <f:facet name="header">Действия</f:facet>
+                <h:commandButton value="Изменить" action="#{productController.editProduct(product)}"/>
+                <h:commandButton value="Удалить" action="#{productController.deleteProduct(product)}">
                     <f:ajax event="click" render="productsForm"/>
                 </h:commandButton>
             </h:column>
@@ -60,7 +60,7 @@
                 #{category.description}
             </h:column>
             <h:column>
-                <f:facet name="header">Actions</f:facet>
+                <f:facet name="header">Действия</f:facet>
                 <h:commandButton value="Изменить" action="#{categoryController.editCategory(category)}"/>
                 <h:commandButton value="Удалить" action="#{categoryController.deleteCategory(category)}">
                     <f:ajax event="click" render="productsForm"/>
@@ -70,6 +70,6 @@
         </h:dataTable>
     </h:form>
     
-    <ui:include src=""></ui:include>
+    <ui:include src="WEB-INF/footer.xhtml"/>
 </h:body>
 </html>
