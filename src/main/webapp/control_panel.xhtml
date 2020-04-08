@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Панель администрирования</title>
+</h:head>
+<h:body>
+    <h1>Товары</h1>
+    <h:form id="productsForm">
+        <h:commandButton value="Add product" action="#{productController.createProduct}"/>
+
+        <h:dataTable value="#{productController.allProducts}" var="product">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{product.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Имя</f:facet>
+                #{product.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Описание</f:facet>
+                #{product.description}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Цена</f:facet>
+                #{product.price}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Actions</f:facet>
+                <h:commandButton value="Edit" action="#{productController.editProduct(product)}"/>
+                <h:commandButton value="Remove" action="#{productController.deleteProduct(product)}">
+                    <f:ajax event="click" render="productsForm"/>
+                </h:commandButton>
+            </h:column>
+
+        </h:dataTable>
+    </h:form>
+
+    <h1>Категории товаров</h1>
+    <h:form id="categoriesForm">
+        <h:commandButton value="Добавить категорию" action="#{productController.createProduct}"/>
+
+        <h:dataTable value="#{categoryController.allCategories}" var="category">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{category.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Имя</f:facet>
+                #{category.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Описание</f:facet>
+                #{category.description}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Actions</f:facet>
+                <h:commandButton value="Изменить" action="#{categoryController.editCategory(category)}"/>
+                <h:commandButton value="Удалить" action="#{categoryController.deleteCategory(category)}">
+                    <f:ajax event="click" render="productsForm"/>
+                </h:commandButton>
+            </h:column>
+
+        </h:dataTable>
+    </h:form>
+    
+    <ui:include src=""></ui:include>
+</h:body>
+</html>

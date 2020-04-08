@@ -1,6 +1,5 @@
 package ru.geekbrains.shop.persist;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,7 +17,7 @@ public class DataSource {
 
     private Connection connection;
 
-    @PostConstruct
+//    @PostConstruct
     public void init() throws SQLException {
         String jdbcConnectionString = ctx.getInitParameter("jdbcConnectionString");
         String dbUsername = ctx.getInitParameter("dbUsername");
