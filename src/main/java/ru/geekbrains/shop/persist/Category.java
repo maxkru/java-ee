@@ -1,9 +1,14 @@
 package ru.geekbrains.shop.persist;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Category {
 
     private Integer id;
+
+    @NotEmpty(message = "Имя категории не должно быть пустым")
     private String name;
+
     private String description;
 
     public Category() {

@@ -12,7 +12,7 @@
     <h1>Панель администрирования</h1>
     <h2>Товары</h2>
     <h:form id="productsForm">
-        <h:commandButton value="Add product" action="#{productController.createProduct}"/>
+        <h:commandButton value="Добавить товар" action="#{productController.createProduct}"/>
 
         <h:dataTable value="#{productController.allProducts}" var="product">
             <h:column>

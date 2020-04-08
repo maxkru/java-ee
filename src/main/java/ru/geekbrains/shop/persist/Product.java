@@ -1,11 +1,19 @@
 package ru.geekbrains.shop.persist;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class Product {
+
     private Integer id;
+
+    @NotEmpty(message = "Имя должно быть указано")
     private String name;
+
     private String description;
+
+    @NotNull(message = "Цена должна быть указана")
     private BigDecimal price;
 
     public Product(Integer id, String name, String description, BigDecimal price) {
