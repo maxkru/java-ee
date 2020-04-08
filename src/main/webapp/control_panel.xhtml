@@ -29,7 +29,7 @@
             </h:column>
             <h:column>
                 <f:facet name="header">Цена</f:facet>
-                #{product.price}
+                #{decimalFormatter.format(product.price)}
             </h:column>
             <h:column>
                 <f:facet name="header">Действия</f:facet>
