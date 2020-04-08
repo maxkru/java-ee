@@ -48,7 +48,7 @@ public class ProductRepository {
 
     public void update(Product product) {
         for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getId() == product.getId()) {
+            if (products.get(i).getId().equals(product.getId())) {
                 products.remove(i);
                 products.add(i, product);
                 break;

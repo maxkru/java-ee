@@ -45,7 +45,10 @@ public class CategoryController implements Serializable {
     }
 
     public String saveCategory() {
-        categoryRepository.insert(category);
+        if (category.getId() == null)
+            categoryRepository.insert(category);
+        else
+            categoryRepository.update(category);
         return "control_panel.xhtml?faces-redirect=true";
     }
 }

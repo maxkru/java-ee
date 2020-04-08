@@ -2,7 +2,7 @@ package ru.geekbrains.shop.persist;
 
 public class Category {
 
-    private int id;
+    private Integer id;
     private String name;
     private String description;
 
@@ -10,13 +10,13 @@ public class Category {
 
     }
 
-    public Category(int id, String name, String description) {
+    public Category(Integer id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

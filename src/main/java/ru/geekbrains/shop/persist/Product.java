@@ -3,12 +3,12 @@ package ru.geekbrains.shop.persist;
 import java.math.BigDecimal;
 
 public class Product {
-    private int id;
+    private Integer id;
     private String name;
     private String description;
     private BigDecimal price;
 
-    public Product(int id, String name, String description, BigDecimal price) {
+    public Product(Integer id, String name, String description, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -19,7 +19,7 @@ public class Product {
 
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

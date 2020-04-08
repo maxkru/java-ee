@@ -43,7 +43,7 @@ public class CategoryRepository {
 
     public void update(Category category) {
         for (int i = 0; i < categories.size(); i++) {
-            if (categories.get(i).getId() == category.getId()) {
+            if (categories.get(i).getId().equals(category.getId())) {
                 categories.remove(i);
                 categories.add(i, category);
                 break;
