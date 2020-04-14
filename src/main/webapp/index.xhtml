@@ -10,7 +10,7 @@
     <h:form id="productsForm">
         <h:dataTable value="#{productController.allProducts}" var="product">
             <h:column>
-                <f:facet name="header">Имя</f:facet>
+                <f:facet name="header">Название</f:facet>
                 #{product.name}
             </h:column>
             <h:column>
@@ -23,39 +23,42 @@
             </h:column>
             <h:column>
                 <f:facet name="header">Действия</f:facet>
-                <!--<h:commandButton value="Добавить в корзину" action="">
+                <h:commandButton value="Добавить в корзину" action="#{cartController.addToCart(product)}">
                     <f:ajax event="click" render="cartForm"/>
-                </h:commandButton>-->
+                </h:commandButton>
             </h:column>
         </h:dataTable>
     </h:form>
     <h2>Корзина</h2>
-    <!--<h:form id="cartForm">
-        <h:dataTable value="" var="productInCart">
+    <h:form id="cartForm">
+        <h:dataTable value="#{cartController.allLineItems}" var="li">
             <h:column>
                 <f:facet name="header">Имя товара</f:facet>
-                #{productInCart.name}
+                #{li.product.name}
             </h:column>
             <h:column>
                 <f:facet name="header">Цена</f:facet>
-                #{productInCart.price}
+                #{decimalFormatter.format(li.product.price)}
             </h:column>
             <h:column>
                 <f:facet name="header">Количество</f:facet>
-                #{productInCart.amount}
+                #{li.qty}
             </h:column>
             <h:column>
                 <f:facet name="header">Стоимость</f:facet>
-                #{productInCart.value}
+                #{decimalFormatter.format(li.totalPrice)}
             </h:column>
             <h:column>
                 <f:facet name="header">Действия</f:facet>
-                <h:commandButton value="Удалить" action="">
+                <h:commandButton value="Добавить" action="#{cartController.addToCart(li.product)}">
+                    <f:ajax event="click" render="productsForm"/>
+                </h:commandButton>
+                <h:commandButton value="Удалить" action="#{cartController.removeFromCart(li.product)}">
                     <f:ajax event="click" render="productsForm"/>
                 </h:commandButton>
             </h:column>
         </h:dataTable>
-    </h:form> -->
+    </h:form>
 
     <ui:include src="WEB-INF/footer.xhtml"/>
 </h:body>
