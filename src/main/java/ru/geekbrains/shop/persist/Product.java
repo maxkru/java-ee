@@ -1,27 +1,38 @@
 package ru.geekbrains.shop.persist;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotEmpty(message = "Имя должно быть указано")
+    @Column
     private String name;
 
+    @Column
     private String description;
 
     @NotNull(message = "Цена должна быть указана")
+    @Column
     private BigDecimal price;
 
-    public Product(Integer id, String name, String description, BigDecimal price) {
+    @ManyToOne
+    private Category category;
+
+    public Product(Integer id, String name, String description, BigDecimal price, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.category = category;
     }
 
     public Product() {
@@ -71,5 +82,13 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

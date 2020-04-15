@@ -1,7 +1,7 @@
 package ru.geekbrains.shop.controller;
 
 import ru.geekbrains.shop.persist.Category;
-import ru.geekbrains.shop.persist.CategoryRepository;
+import ru.geekbrains.shop.persist.repository.CategoryRepository;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;

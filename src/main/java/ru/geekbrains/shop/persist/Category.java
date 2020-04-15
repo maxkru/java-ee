@@ -1,15 +1,29 @@
 package ru.geekbrains.shop.persist;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
+@Entity
 public class Category {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column
     @NotEmpty(message = "Имя категории не должно быть пустым")
     private String name;
 
+    @Column
     private String description;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Category() {
 

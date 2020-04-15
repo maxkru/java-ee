@@ -44,7 +44,7 @@
 
     <h2>Категории товаров</h2>
     <h:form id="categoriesForm">
-        <h:commandButton value="Добавить категорию" action="#{productController.createProduct}"/>
+        <h:commandButton value="Добавить категорию" action="#{categoryController.createCategory}"/>
 
         <h:dataTable value="#{categoryController.allCategories}" var="category">
             <h:column>

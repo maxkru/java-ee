@@ -1,23 +1,37 @@
-package ru.geekbrains.shop.cart;
+package ru.geekbrains.shop.persist;
 
-import ru.geekbrains.shop.persist.Product;
-
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
 public class LineItem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
     private Product product;
+
+    @Column
     private String color;
+
+    @Column
     private Integer qty;
+
+    @Column
     private BigDecimal totalPrice;
 
     public LineItem() {
 
     }
 
-    public LineItem(Product product, String color) {
+    public LineItem(Product product, String color, Integer qty, BigDecimal totalPrice) {
         this.product = product;
         this.color = color;
+        this.qty = qty;
+        this.totalPrice = totalPrice;
     }
 
     public Product getProduct() {

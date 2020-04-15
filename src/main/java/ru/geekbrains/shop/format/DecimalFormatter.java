@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 @Named
 @ApplicationScoped
 public class DecimalFormatter {
-    private static DecimalFormat format = new DecimalFormat("# ###.00");
+    private static final DecimalFormat format = new DecimalFormat("# ###.00");
 
     public String format(BigDecimal n) {
         return format.format(n);

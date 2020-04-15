@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:body>
+    <h1>Магазин</h1>
+    <h2>Каталог товаров</h2>
+    <h:form id="productsForm">
+        <h:dataTable value="#{productRepository.findByCategory(param.get('categoryId'))}" var="product">
+            <h:column>
+                <f:facet name="header">Название</f:facet>
+                #{product.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Описание</f:facet>
+                #{product.description}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Цена</f:facet>
+                #{decimalFormatter.format(product.price)}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Действия</f:facet>
+                <h:commandButton value="Добавить в корзину" action="#{cartController.addToCart(product)}">
+                    <f:ajax event="click" render="cartForm"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>
