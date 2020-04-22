@@ -27,12 +27,12 @@ public class Product {
     @ManyToOne
     private Category category;
 
-    public Product(Integer id, String name, String description, BigDecimal price) {
+    public Product(Integer id, String name, String description, BigDecimal price, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-//        this.category = category;
+        this.category = category;
     }
 
     public Product() {

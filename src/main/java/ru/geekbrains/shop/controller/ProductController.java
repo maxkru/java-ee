@@ -1,7 +1,7 @@
 package ru.geekbrains.shop.controller;
 
-import ru.geekbrains.shop.persist.Product;
 import ru.geekbrains.shop.service.ProductService;
+import ru.geekbrains.shop.service.repr.ProductRepr;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -16,39 +16,39 @@ public class ProductController implements Serializable {
     @EJB
     private ProductService productService;
 
-    private Product product;
+    private ProductRepr productRepr;
 
-    public Product getProduct() {
-        return product;
+    public ProductRepr getProductRepr() {
+        return productRepr;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductRepr(ProductRepr productRepr) {
+        this.productRepr = productRepr;
     }
 
     public String createProduct() {
-        this.product = new Product();
+        this.productRepr = new ProductRepr();
         return "product.xhtml?faces-redirect=true";
     }
 
-    public List<Product> getAllProducts() {
+    public List<ProductRepr> getAllProducts() {
         return productService.findAll();
     }
 
-    public String editProduct(Product product) {
-        this.product = product;
+    public String editProduct(ProductRepr productRepr) {
+        this.productRepr = productRepr;
         return "product.xhtml?faces-redirect=true";
     }
 
-    public void deleteProduct(Product product) {
-        productService.delete(product.getId());
+    public void deleteProduct(ProductRepr productRepr) {
+        productService.delete(productRepr.getId());
     }
 
     public String saveProduct() {
-        if (product.getId() == null)
-            productService.insert(product);
+        if (productRepr.getId() == null)
+            productService.insert(productRepr);
         else
-            productService.update(product);
+            productService.update(productRepr);
         return "control_panel.xhtml?faces-redirect=true";
     }
 }

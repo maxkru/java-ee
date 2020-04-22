@@ -6,16 +6,16 @@
 <h:body>
     <h:form id="productForm">
         <h:outputLabel value="Имя категории"/>
-        <h:inputText id="name" value="#{categoryController.category.name}">
+        <h:inputText id="name" value="#{categoryController.categoryRepr.name}">
             <f:validateBean/>
         </h:inputText>
         <br/>
         <h:outputLabel value="Описание категории"/>
-        <h:inputText id="description" value="#{categoryController.category.description}">
+        <h:inputText id="description" value="#{categoryController.categoryRepr.description}">
             <f:validateBean/>
         </h:inputText>
         <br/>
-        <h:commandButton value="Сохранить" action="#{categoryController.saveCategory}"/>
+        <h:commandButton value="Сохранить" action="#{categoryController.saveCategoryRepr}"/>
     </h:form>
 </h:body>
 </html>

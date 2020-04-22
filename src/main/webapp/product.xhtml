@@ -8,22 +8,22 @@
 <h:body>
     <h:form id="productForm">
         <h:outputLabel value="Имя товара" for="name"/>
-        <h:inputText id="name" value="#{productController.product.name}">
+        <h:inputText id="name" value="#{productController.productRepr.name}">
             <f:validateBean/>
         </h:inputText>
         <br/>
         <h:outputLabel value="Описание товара" for="description"/>
-        <h:inputText id="description" value="#{productController.product.description}">
+        <h:inputText id="description" value="#{productController.productRepr.description}">
             <f:validateBean/>
         </h:inputText>
         <br/>
         <h:outputLabel value="Цена товара" for="price"/>
-        <h:inputText id="price" value="#{productController.product.price}">
+        <h:inputText id="price" value="#{productController.productRepr.price}">
             <f:validateBean/>
         </h:inputText>
         <br/>
         <h:outputLabel value="Идентификатор категории" for="categoryId"/>
-        <h:inputText id="categoryId" value="#{productController.product.category.id}">
+        <h:inputText id="categoryId" value="#{productController.productRepr.categoryId}">
             <f:validateBean/>
         </h:inputText>
         <br/>

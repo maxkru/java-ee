@@ -1,19 +1,19 @@
 package ru.geekbrains.shop.service;
 
-import ru.geekbrains.shop.persist.Category;
+import ru.geekbrains.shop.service.repr.CategoryRepr;
 
 import javax.ejb.Local;
 import java.util.List;
 
 @Local
 public interface CategoryService {
-    void insert(Category category);
+    void insert(CategoryRepr categoryRepr);
 
     void delete(int id);
 
-    List<Category> findAll();
+    List<CategoryRepr> findAll();
 
-    void update(Category category);
+    void update(CategoryRepr categoryRepr);
 
-    Category findById(int id);
+    CategoryRepr findById(int id);
 }

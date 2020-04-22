@@ -1,22 +1,21 @@
 package ru.geekbrains.shop.service;
 
-import ru.geekbrains.shop.persist.Product;
+import ru.geekbrains.shop.service.repr.ProductRepr;
 
 import javax.ejb.Local;
 import java.util.List;
 
 @Local
 public interface ProductService {
-
-    void insert(Product product);
+    void insert(ProductRepr product);
 
     void delete(int id);
 
-    void update(Product product);
+    void update(ProductRepr product);
 
-    Product findById(int id);
+    ProductRepr findById(int id);
 
-    List<Product> findByCategory(int categoryId);
+    List<ProductRepr> findByCategory(int categoryId);
 
-    List<Product> findAll();
+    List<ProductRepr> findAll();
 }

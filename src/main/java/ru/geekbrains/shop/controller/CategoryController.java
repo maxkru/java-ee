@@ -1,10 +1,10 @@
 package ru.geekbrains.shop.controller;
 
-import ru.geekbrains.shop.persist.Category;
-import ru.geekbrains.shop.persist.repository.CategoryRepository;
+import ru.geekbrains.shop.service.CategoryService;
+import ru.geekbrains.shop.service.repr.CategoryRepr;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -12,43 +12,42 @@ import java.util.List;
 @Named
 @SessionScoped
 public class CategoryController implements Serializable {
+    @EJB
+    private CategoryService service;
 
-    @Inject
-    private CategoryRepository categoryRepository;
+    private CategoryRepr categoryRepr;
 
-    private Category category;
-
-    public Category getCategory() {
-        return category;
+    public CategoryRepr getCategoryRepr() {
+        return categoryRepr;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryRepr(CategoryRepr categoryRepr) {
+        this.categoryRepr = categoryRepr;
     }
 
-    public String createCategory() {
-        this.category = new Category();
+    public String createcategoryRepr() {
+        this.categoryRepr = new CategoryRepr();
         return "category.xhtml?faces-redirect=true";
     }
 
-    public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
+    public List<CategoryRepr> getAllCategories() {
+        return service.findAll();
     }
 
-    public String editCategory(Category category) {
-        this.category = category;
+    public String editCategory(CategoryRepr categoryRepr) {
+        this.categoryRepr = categoryRepr;
         return "category.xhtml?faces-redirect=true";
     }
 
-    public void deleteCategory(Category category) {
-        categoryRepository.delete(category.getId());
+    public void deleteCategoryRepr(CategoryRepr categoryRepr) {
+        service.delete(categoryRepr.getId());
     }
 
-    public String saveCategory() {
-        if (category.getId() == null)
-            categoryRepository.insert(category);
+    public String saveCategoryRepr() {
+        if (categoryRepr.getId() == null)
+            service.insert(categoryRepr);
         else
-            categoryRepository.update(category);
+            service.update(categoryRepr);
         return "control_panel.xhtml?faces-redirect=true";
     }
 }
