@@ -1,7 +1,7 @@
 package ru.geekbrains.shop.controller;
 
 import ru.geekbrains.shop.persist.Product;
-import ru.geekbrains.shop.persist.repository.ProductRepository;
+import ru.geekbrains.shop.service.ProductService;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -14,7 +14,7 @@ import java.util.List;
 public class ProductController implements Serializable {
 
     @EJB
-    private ProductRepository productRepository;
+    private ProductService productService;
 
     private Product product;
 
@@ -32,7 +32,7 @@ public class ProductController implements Serializable {
     }
 
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productService.findAll();
     }
 
     public String editProduct(Product product) {
@@ -41,14 +41,14 @@ public class ProductController implements Serializable {
     }
 
     public void deleteProduct(Product product) {
-        productRepository.delete(product.getId());
+        productService.delete(product.getId());
     }
 
     public String saveProduct() {
         if (product.getId() == null)
-            productRepository.insert(product);
+            productService.insert(product);
         else
-            productRepository.update(product);
+            productService.update(product);
         return "control_panel.xhtml?faces-redirect=true";
     }
 }

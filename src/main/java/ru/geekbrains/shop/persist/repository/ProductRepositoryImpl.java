@@ -1,5 +1,7 @@
 package ru.geekbrains.shop.persist.repository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.geekbrains.shop.persist.Product;
 
 import javax.annotation.PostConstruct;
@@ -12,10 +14,10 @@ import java.util.List;
 @Stateless
 public class ProductRepositoryImpl implements ProductRepository {
 
+    private static final Logger logger = LoggerFactory.getLogger(ProductRepositoryImpl.class);
+
     @PersistenceContext(unitName = "ds")
     private EntityManager em;
-
-    private int nextId;
 
     @PostConstruct
     public void init() {
@@ -25,6 +27,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     @TransactionAttribute
     public void insert(Product product) {
+        logger.info("insert");
         em.persist(product);
     }
 
@@ -45,6 +48,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     @TransactionAttribute
     public void update(Product product) {
+        logger.info("update");
         em.merge(product);
     }
 
