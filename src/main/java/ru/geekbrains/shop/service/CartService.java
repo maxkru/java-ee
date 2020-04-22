@@ -1,7 +1,7 @@
 package ru.geekbrains.shop.service;
 
-import ru.geekbrains.shop.persist.LineItem;
-import ru.geekbrains.shop.persist.Product;
+import ru.geekbrains.shop.service.repr.LineItem;
+import ru.geekbrains.shop.service.repr.ProductRepr;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -9,9 +9,9 @@ import java.util.List;
 @Local
 public interface CartService {
 
-    void addProductQty(Product product, String color, Integer qty);
+    void addProductQty(ProductRepr productRepr, String color, Integer qty);
 
-    void removeProductQty(Product product, String color, Integer qty);
+    void removeProductQty(ProductRepr productRepr, String color, Integer qty);
 
     List<LineItem> getAllLineItems();
 }

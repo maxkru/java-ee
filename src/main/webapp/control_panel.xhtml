@@ -44,7 +44,7 @@
 
     <h2>Категории товаров</h2>
     <h:form id="categoriesForm">
-        <h:commandButton value="Добавить категорию" action="#{categoryController.createCategory}"/>
+        <h:commandButton value="Добавить категорию" action="#{categoryController.createcategoryRepr}"/>
 
         <h:dataTable value="#{categoryController.allCategories}" var="category">
             <h:column>
@@ -62,7 +62,7 @@
             <h:column>
                 <f:facet name="header">Действия</f:facet>
                 <h:commandButton value="Изменить" action="#{categoryController.editCategory(category)}"/>
-                <h:commandButton value="Удалить" action="#{categoryController.deleteCategory(category)}">
+                <h:commandButton value="Удалить" action="#{categoryController.deleteCategoryRepr(category)}">
                     <f:ajax event="click" render="productsForm"/>
                 </h:commandButton>
             </h:column>

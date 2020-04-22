@@ -1,8 +1,8 @@
 package ru.geekbrains.shop.controller;
 
-import ru.geekbrains.shop.persist.LineItem;
-import ru.geekbrains.shop.persist.Product;
 import ru.geekbrains.shop.service.CartService;
+import ru.geekbrains.shop.service.repr.LineItem;
+import ru.geekbrains.shop.service.repr.ProductRepr;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -21,11 +21,11 @@ public class CartController implements Serializable {
         return cartService.getAllLineItems();
     }
 
-    public void addToCart(Product product) {
-        cartService.addProductQty(product, "", 1);
+    public void addToCart(ProductRepr productRepr) {
+        cartService.addProductQty(productRepr, "", 1);
     }
 
-    public void removeFromCart(Product product) {
-        cartService.removeProductQty(product, "", 1);
+    public void removeFromCart(ProductRepr productRepr) {
+        cartService.removeProductQty(productRepr, "", 1);
     }
 }

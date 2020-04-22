@@ -34,11 +34,11 @@
         <h:dataTable value="#{cartController.allLineItems}" var="li">
             <h:column>
                 <f:facet name="header">Имя товара</f:facet>
-                #{li.product.name}
+                #{li.productRepr.name}
             </h:column>
             <h:column>
                 <f:facet name="header">Цена</f:facet>
-                #{decimalFormatter.format(li.product.price)}
+                #{decimalFormatter.format(li.productRepr.price)}
             </h:column>
             <h:column>
                 <f:facet name="header">Количество</f:facet>
@@ -50,10 +50,10 @@
             </h:column>
             <h:column>
                 <f:facet name="header">Действия</f:facet>
-                <h:commandButton value="Добавить" action="#{cartController.addToCart(li.product)}">
+                <h:commandButton value="Добавить" action="#{cartController.addToCart(li.productRepr)}">
                     <f:ajax event="click" render="productsForm"/>
                 </h:commandButton>
-                <h:commandButton value="Удалить" action="#{cartController.removeFromCart(li.product)}">
+                <h:commandButton value="Удалить" action="#{cartController.removeFromCart(li.productRepr)}">
                     <f:ajax event="click" render="productsForm"/>
                 </h:commandButton>
             </h:column>
