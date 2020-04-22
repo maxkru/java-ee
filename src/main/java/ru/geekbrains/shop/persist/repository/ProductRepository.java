@@ -2,55 +2,21 @@ package ru.geekbrains.shop.persist.repository;
 
 import ru.geekbrains.shop.persist.Product;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import javax.ejb.Local;
 import java.util.List;
 
-@Named
-@ApplicationScoped
-public class ProductRepository {
+@Local
+public interface ProductRepository {
+    void insert(Product product);
 
-    @PersistenceContext(unitName = "ds")
-    private EntityManager em;
+    void delete(int id);
 
-    private int nextId;
+    List<Product> findAll();
 
-    @PostConstruct
-    public void init() {
+    void update(Product product);
 
-    }
+    Product findById(int id);
 
-    @Transactional
-    public void insert(Product product) {
-        em.persist(product);
-    }
+    List<Product> findByCategory(int categoryId);
 
-    @Transactional
-    public void delete(int id) {
-        Product product = em.find(Product.class, id);
-        if (product != null) {
-            em.remove(product);
-        }
-    }
-
-    public List<Product> findAll() {
-        return em.createQuery("FROM Product", Product.class).getResultList();
-    }
-
-    @Transactional
-    public void update(Product product) {
-        em.merge(product);
-    }
-
-    public Product findById(int id) {
-        return em.find(Product.class, id);
-    }
-
-    public List<Product> findByCategory(int categoryId) {
-        return em.createQuery("FROM Product WHERE Product.category.id = ?", Product.class).setParameter(0, categoryId).getResultList();
-    }
 }

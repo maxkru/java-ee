@@ -4,8 +4,8 @@ import ru.geekbrains.shop.persist.LineItem;
 import ru.geekbrains.shop.persist.Product;
 import ru.geekbrains.shop.service.CartService;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
 @SessionScoped
 public class CartController implements Serializable {
 
-    @Inject
+    @EJB
     private CartService cartService;
 
     public List<LineItem> getAllLineItems() {
