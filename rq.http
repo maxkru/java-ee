@@ -1,0 +1,17 @@
+GET http://localhost:8080/java-ee/api/v1/product/list
+
+###
+
+PUT http://localhost:8080/java-ee/api/v1/product/new
+Content-Type: application/json
+
+{
+  "description": "Descr",
+  "name": "Number 3",
+  "price": "19.00",
+  "categoryId": 1
+}
+
+###
+
+DELETE http://localhost:8080/java-ee/api/v1/product/5/id

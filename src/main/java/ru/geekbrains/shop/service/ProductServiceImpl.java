@@ -3,8 +3,9 @@ package ru.geekbrains.shop.service;
 import ru.geekbrains.shop.persist.Product;
 import ru.geekbrains.shop.persist.repository.CategoryRepository;
 import ru.geekbrains.shop.persist.repository.ProductRepository;
-import ru.geekbrains.shop.service.remote.ProductServiceWs;
+import ru.geekbrains.shop.rest.ProductServiceRs;
 import ru.geekbrains.shop.service.repr.ProductRepr;
+import ru.geekbrains.shop.service.ws.ProductServiceWs;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -13,8 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-@WebService(endpointInterface = "ru.geekbrains.shop.service.remote.ProductServiceWs", serviceName = "ProductService")
-public class ProductServiceImpl implements ProductService, ProductServiceWs {
+@WebService(endpointInterface = "ru.geekbrains.shop.service.ws.ProductServiceWs", serviceName = "ProductService")
+public class ProductServiceImpl implements ProductService, ProductServiceWs, ProductServiceRs {
 
     @EJB
     private ProductRepository repository;

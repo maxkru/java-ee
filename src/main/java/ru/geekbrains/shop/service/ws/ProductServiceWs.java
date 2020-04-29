@@ -1,4 +1,4 @@
-package ru.geekbrains.shop.service.remote;
+package ru.geekbrains.shop.service.ws;
 
 import ru.geekbrains.shop.service.repr.ProductRepr;
 

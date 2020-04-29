@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
@@ -59,11 +60,16 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findByName(String name) {
-        return em.createQuery("FROM Product WHERE Product.name = ?", Product.class).setParameter(0, name).getResultList();
+        TypedQuery<Product> q = em.createQuery("SELECT p FROM Product p WHERE p.name = :name", Product.class);
+        q.setParameter("name", name);
+        return q.getResultList();
     }
 
     @Override
     public List<Product> findByCategory(int categoryId) {
-        return em.createQuery("FROM Product WHERE Product.category.id = ?", Product.class).setParameter(0, categoryId).getResultList();
+        logger.info("findByCategory");
+        TypedQuery<Product> q = em.createQuery("SELECT p FROM Product p WHERE p.category.id = :categoryId", Product.class);
+        q.setParameter("categoryId", categoryId);
+        return q.getResultList();
     }
 }
