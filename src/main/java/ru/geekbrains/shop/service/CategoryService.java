@@ -7,7 +7,7 @@ import java.util.List;
 
 @Local
 public interface CategoryService {
-    void insert(CategoryRepr categoryRepr);
+    void insertCategory(CategoryRepr categoryRepr);
 
     void delete(int id);
 

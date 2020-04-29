@@ -46,7 +46,7 @@ public class ProductController implements Serializable {
 
     public String saveProduct() {
         if (productRepr.getId() == null)
-            productService.insert(productRepr);
+            productService.insertProduct(productRepr);
         else
             productService.update(productRepr);
         return "control_panel.xhtml?faces-redirect=true";

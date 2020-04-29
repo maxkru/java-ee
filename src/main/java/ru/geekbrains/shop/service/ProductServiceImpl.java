@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService, ProductServiceWs, Pro
     private CategoryRepository categoryRepository;
 
     @Override
-    public void insert(ProductRepr repr) {
+    public void insertProduct(ProductRepr repr) {
         repository.insert(fromRepr(repr));
     }
 

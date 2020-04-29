@@ -9,6 +9,6 @@ import javax.jws.WebService;
 public interface CategoryServiceWs {
 
     @WebMethod
-    void insert(CategoryRepr categoryRepr);
+    void insertCategory(CategoryRepr categoryRepr);
 
 }

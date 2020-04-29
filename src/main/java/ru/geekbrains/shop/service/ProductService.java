@@ -7,7 +7,7 @@ import java.util.List;
 
 @Local
 public interface ProductService {
-    void insert(ProductRepr product);
+    void insertProduct(ProductRepr product);
 
     void delete(int id);
 

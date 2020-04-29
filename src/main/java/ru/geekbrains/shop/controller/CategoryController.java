@@ -45,7 +45,7 @@ public class CategoryController implements Serializable {
 
     public String saveCategoryRepr() {
         if (categoryRepr.getId() == null)
-            service.insert(categoryRepr);
+            service.insertCategory(categoryRepr);
         else
             service.update(categoryRepr);
         return "control_panel.xhtml?faces-redirect=true";

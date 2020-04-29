@@ -10,7 +10,7 @@ import java.util.List;
 public interface ProductServiceWs {
 
     @WebMethod
-    void insert(ProductRepr productRepr);
+    void insertProduct(ProductRepr productRepr);
 
     @WebMethod
     void delete(int id);

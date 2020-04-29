@@ -20,7 +20,7 @@ public class CategoryServiceImpl implements CategoryService, CategoryServiceWs, 
     private CategoryRepository repository;
 
     @Override
-    public void insert(CategoryRepr repr) {
+    public void insertCategory(CategoryRepr repr) {
         repository.insert(new Category(
                 repr.getId(),
                 repr.getName(),

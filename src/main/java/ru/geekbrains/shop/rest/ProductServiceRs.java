@@ -14,7 +14,7 @@ public interface ProductServiceRs {
     @PUT
     @Path("/new")
     @Consumes(MediaType.APPLICATION_JSON)
-    void insert(ProductRepr product);
+    void insertProduct(ProductRepr product);
 
     @DELETE
     @Path("/{id}/id")

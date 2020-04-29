@@ -15,6 +15,6 @@ public interface CategoryServiceRs {
     @PUT
     @Path("/new")
     @Consumes(MediaType.APPLICATION_JSON)
-    void insert(CategoryRepr product);
+    void insertCategory(CategoryRepr product);
 
 }
