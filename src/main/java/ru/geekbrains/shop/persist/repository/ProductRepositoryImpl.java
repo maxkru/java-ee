@@ -58,6 +58,11 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
+    public List<Product> findByName(String name) {
+        return em.createQuery("FROM Product WHERE Product.name = ?", Product.class).setParameter(0, name).getResultList();
+    }
+
+    @Override
     public List<Product> findByCategory(int categoryId) {
         return em.createQuery("FROM Product WHERE Product.category.id = ?", Product.class).setParameter(0, categoryId).getResultList();
     }

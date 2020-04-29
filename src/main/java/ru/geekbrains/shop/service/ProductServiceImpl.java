@@ -3,15 +3,18 @@ package ru.geekbrains.shop.service;
 import ru.geekbrains.shop.persist.Product;
 import ru.geekbrains.shop.persist.repository.CategoryRepository;
 import ru.geekbrains.shop.persist.repository.ProductRepository;
+import ru.geekbrains.shop.service.remote.ProductServiceWs;
 import ru.geekbrains.shop.service.repr.ProductRepr;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.jws.WebService;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-public class ProductServiceImpl implements ProductService {
+@WebService(endpointInterface = "ru.geekbrains.shop.service.remote.ProductServiceWs", serviceName = "ProductService")
+public class ProductServiceImpl implements ProductService, ProductServiceWs {
 
     @EJB
     private ProductRepository repository;
@@ -43,6 +46,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductRepr> findByCategory(int categoryId) {
         return repository.findByCategory(categoryId).stream()
+                .map(this::toRepr)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductRepr> findByName(String name) {
+        return repository.findByName(name).stream()
                 .map(this::toRepr)
                 .collect(Collectors.toList());
     }

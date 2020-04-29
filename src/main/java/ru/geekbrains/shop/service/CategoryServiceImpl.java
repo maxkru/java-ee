@@ -2,15 +2,18 @@ package ru.geekbrains.shop.service;
 
 import ru.geekbrains.shop.persist.Category;
 import ru.geekbrains.shop.persist.repository.CategoryRepository;
+import ru.geekbrains.shop.service.remote.CategoryServiceWs;
 import ru.geekbrains.shop.service.repr.CategoryRepr;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.jws.WebService;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-public class CategoryServiceImpl implements CategoryService {
+@WebService(endpointInterface = "ru.geekbrains.shop.service.remote.CategoryServiceWs", serviceName = "CategoryService")
+public class CategoryServiceImpl implements CategoryService, CategoryServiceWs {
 
     @EJB
     private CategoryRepository repository;

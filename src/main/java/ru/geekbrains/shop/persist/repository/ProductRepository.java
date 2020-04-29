@@ -17,6 +17,8 @@ public interface ProductRepository {
 
     Product findById(int id);
 
+    List<Product> findByName(String name);
+
     List<Product> findByCategory(int categoryId);
 
 }
