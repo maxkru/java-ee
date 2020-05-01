@@ -1,5 +1,7 @@
 package ru.geekbrains.shop.persist;
 
+import ru.geekbrains.shop.service.repr.UserRepr;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -40,6 +42,14 @@ public class User implements Serializable {
         this.name = name;
         this.password = password;
         this.roles = new HashSet<>();
+    }
+
+    public User(UserRepr repr) {
+        this.id = repr.getId();
+        this.name = repr.getName();
+        this.password = repr.getPassword();
+        this.roles = new HashSet<>();
+        repr.getRoles().forEach(userRoleRepr -> this.roles.add(new UserRole(userRoleRepr)));
     }
 
     public Integer getId() {
