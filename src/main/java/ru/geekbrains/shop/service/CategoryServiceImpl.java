@@ -6,6 +6,7 @@ import ru.geekbrains.shop.rest.CategoryServiceRs;
 import ru.geekbrains.shop.service.repr.CategoryRepr;
 import ru.geekbrains.shop.service.ws.CategoryServiceWs;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
@@ -18,6 +19,12 @@ public class CategoryServiceImpl implements CategoryService, CategoryServiceWs, 
 
     @EJB
     private CategoryRepository repository;
+
+    @PostConstruct
+    public void init() {
+        if (repository.findAll().isEmpty())
+            repository.insert(new Category(1, "Category 1", "First category"));
+    }
 
     @Override
     public void insertCategory(CategoryRepr repr) {

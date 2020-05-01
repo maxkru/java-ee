@@ -25,7 +25,8 @@ public class ProductServiceImpl implements ProductService, ProductServiceWs, Pro
 
     @Override
     public void insertProduct(ProductRepr repr) {
-        repository.insert(fromRepr(repr));
+        if (categoryRepository.findById(repr.getCategoryId()) != null)
+            repository.insert(fromRepr(repr));
     }
 
     @Override
