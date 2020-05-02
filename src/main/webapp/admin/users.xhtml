@@ -5,15 +5,18 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:body>
+    <f:event listener="#{userController.preLoad}" type="preRenderView"/>
+
     <h:form id="usersForm">
+        <h:commandButton value="Добавить пользователя" action="#{userController.createUser}"/>
         <h:dataTable value="#{userController.allUsers}" var="user">
             <h:column>
                 <f:facet name="header">ID</f:facet>
-                ${user.id}
+                #{user.id}
             </h:column>
             <h:column>
                 <f:facet name="header">Имя пользователя</f:facet>
-                ${user.name}
+                #{user.name}
             </h:column>
             <h:column>
                 <f:facet name="header">Действия</f:facet>
